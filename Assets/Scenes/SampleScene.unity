@@ -531,7 +531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cursor: {x: 0, y: 0, z: 0}
-  maxDistance: 8
+  maxDistance: 3
   Placer: {fileID: 1050341290}
 --- !u!1 &410087039
 GameObject:
@@ -1145,7 +1145,7 @@ MonoBehaviour:
   SelectedBuilding: {fileID: 6400707001769550338, guid: 7bb3969993ddd824db5f2094cc916545, type: 3}
   BuildPosition: {x: 0, y: 0, z: 0}
   BuildRotation: {x: 0, y: 0, z: 0}
-  Availiable: 0
+  Cursor: {fileID: 330585549}
 --- !u!1 &1443169004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,7 +1299,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2086122498
 Transform:
   m_ObjectHideFlags: 0

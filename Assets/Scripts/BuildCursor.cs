@@ -19,11 +19,12 @@ public class BuildCursor : MonoBehaviour
             // Добавить логику для привязке позиции к сетке
             Cursor = hit.point;
 
-            Placer.Availiable = true;
+            // Placer.Availiable = true;
             Placer.BuildPosition = Cursor;
         }
         else
-            Placer.Availiable = false;
+            Cursor = transform.position + transform.forward * maxDistance;
+            // Placer.Availiable = false;
     }
 
     void OnDrawGizmosSelected()

@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (InputSystem.actions.FindAction("Click").IsPressed())
+        if (InputSystem.actions.FindAction("Click").IsPressed() && !Focused)
             MouseLock();
 
         if (!Focused)
