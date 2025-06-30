@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7cf6d3267e4ee41a3a34e7982edce4, type: 3}
+  m_Name: Test 1
+  m_EditorClassIdentifier: 
+  Name: Wooden Wall
+  Ingridients:
+  - item: {fileID: 11400000, guid: 2386e96383a3df448b4893382feeeedc, type: 2}
+    count: 3
+  CraftableItem: {fileID: 11400000, guid: c9c1c2128313d15498e7dc3e5fd4f64e, type: 2}
