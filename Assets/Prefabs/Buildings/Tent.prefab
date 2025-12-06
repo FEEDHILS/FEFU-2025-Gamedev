@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 4031653882581352296}
   - component: {fileID: 26058757341114573}
   - component: {fileID: 2862146435590784007}
-  - component: {fileID: 7530347154231629034}
-  - component: {fileID: 6997289345707760216}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -88,55 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7530347154231629034
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4375422362349577682}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6705128238138053353, guid: 6724caf277831854fa8c7e4bcd500aa1, type: 3}
---- !u!54 &6997289345707760216
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4375422362349577682}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &6400707001769550338
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,9 +95,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 183054163106585820}
-  - component: {fileID: 2751095660913854863}
-  - component: {fileID: 2123453091914824150}
   - component: {fileID: 2451263081776773697}
+  - component: {fileID: 5239397952170565497}
   m_Layer: 2
   m_Name: Tent
   m_TagString: Untagged
@@ -172,72 +120,6 @@ Transform:
   - {fileID: 4031653882581352296}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2751095660913854863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6400707001769550338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38045d3368f081142965ef1020b2ac71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PrebuildMaterial: {fileID: 2100000, guid: c2cf3ad17b8af324d981bbd4f6e0b529, type: 2}
-  Model: {fileID: 4375422362349577682}
-  Placeable:
-    serializedVersion: 2
-    m_Bits: 1
-  CanPlace: 1
-  EnableOverlapRule: 1
-  OverlapTrigger: {fileID: 2123453091914824150}
-  FreePlacementRule: 1
-  RotateTowardsPlayer: 1
-  SnapOnInput: 1
-  GridPlacementRule: 0
-  StepX: 2
-  StepY: 2
-  StepZ: 2
-  SnapToGroundRule: 1
-  SnapToGroundDistance: 4
-  SnapEvenOnCollision: 0
-  OnBuildPlaced:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7530347154231629034}
-        m_TargetAssemblyTypeName: UnityEngine.Collider, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
---- !u!65 &2123453091914824150
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6400707001769550338}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.1794648, y: 2.4442317, z: 2.1213796}
-  m_Center: {x: -0.04123807, y: 0.72211576, z: -0.049669147}
 --- !u!54 &2451263081776773697
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -265,3 +147,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &5239397952170565497
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6400707001769550338}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.19
+  m_Height: 2.81
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.29, z: 0}

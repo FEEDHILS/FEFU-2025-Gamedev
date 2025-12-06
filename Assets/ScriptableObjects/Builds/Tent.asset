@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d25e0641f518d640ab1ec5f90f4ad72, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c2d908e6e3a2d64cb6b7ab5c0d788f6, type: 3}
   m_Name: Tent
   m_EditorClassIdentifier: 
-  itemName: Tent
-  maxStackSize: 4
-  icon: {fileID: 0}
-  DropModel: {fileID: 0}
-  Prebuild: {fileID: 0}
-  BuildData: {fileID: 11400000, guid: 1a953f800efce884085d8124e26b2c52, type: 2}
+  SchematicModel: {fileID: 6705128238138053353, guid: 6724caf277831854fa8c7e4bcd500aa1, type: 3}
+  OriginOffset: {x: 0, y: 0, z: 0}
+  BuildPrefab: {fileID: 6400707001769550338, guid: a8b33868bcd63a0458746348a9d26f1d, type: 3}

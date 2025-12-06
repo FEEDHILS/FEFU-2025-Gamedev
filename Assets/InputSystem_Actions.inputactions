@@ -1154,17 +1154,35 @@
                 },
                 {
                     "name": "RotateBuild",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "b95b3a92-8572-4024-b1c6-348e148ce19a",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RotateToPlayer",
+                    "type": "Button",
+                    "id": "b07dde96-a2e0-409f-9794-b48025840ce8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Place",
+                    "type": "Button",
+                    "id": "340cebe0-ec9e-4a17-90b5-255cd526344a",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Place",
+                    "name": "SnapToGround",
                     "type": "Button",
-                    "id": "340cebe0-ec9e-4a17-90b5-255cd526344a",
+                    "id": "12e1d730-6c86-4a41-bb63-ba94ab214b66",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -1175,7 +1193,7 @@
                 {
                     "name": "",
                     "id": "cdea718e-a7fc-4f7b-b70d-f860806db53f",
-                    "path": "<Keyboard>/v",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -1186,7 +1204,7 @@
                 {
                     "name": "",
                     "id": "64fd9ffc-cbe5-446e-abbc-14a45c339787",
-                    "path": "<Keyboard>/r",
+                    "path": "<Mouse>/scroll/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -1196,12 +1214,34 @@
                 },
                 {
                     "name": "",
+                    "id": "0c8f736c-31d4-468b-b15a-88f4b940f8cb",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateToPlayer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e101a2a2-7aa8-4250-aa2c-74d4dab8b5d6",
-                    "path": "<Keyboard>/space",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Place",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ea4d0b0c-92a2-46ec-8f65-10f4563ffe91",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SnapToGround",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

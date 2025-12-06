@@ -82,8 +82,8 @@ public class DraggableUI : MonoBehaviour
 
         if (state)
         {
-            NameUI.text = Carrying.item.name;
-            AmountUI.text = Carrying.count.ToString();
+            NameUI.text = Carrying.item.itemName;
+            AmountUI.text = Carrying.count > 1 ? Carrying.count.ToString() : "";
         }
         else
         {

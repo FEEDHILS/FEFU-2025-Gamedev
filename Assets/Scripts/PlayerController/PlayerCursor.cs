@@ -5,13 +5,16 @@ using UnityEngine.InputSystem;
 
 public class PlayerCursor : MonoBehaviour
 {
-    static public Vector3 Position;
-    static public Transform Anchor; // Player
+    public static PlayerCursor instance = null;
+    void OnEnable() => instance = this;
+    void OnDisable() => instance = null;
+    public Vector3 Position;
+    public Transform Anchor;
     public float maxDistance = 5f;
 
     [Tooltip("True if cursor hit something, False if cursor is in air.")]
-    [SerializeField]
-    static public bool Collided = false;
+    static public RaycastHit Collided;
+    public LayerMask ColliderMask;
 
     void Awake()
     {
@@ -22,27 +25,28 @@ public class PlayerCursor : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, ColliderMask))
         {
             // Добавить логику для привязке позиции к сетке
             Position = hit.point;
-            Collided = true;
+            Collided = hit;
 
-            WhenHitSomething(hit);
+            WhenHitSomething();
         }
         else
         {
             Position = transform.position + transform.forward * maxDistance;
-            Collided = false;
+            Collided = new RaycastHit(); 
+            hit.point = Position;
         }
     }
 
 
-    void WhenHitSomething(RaycastHit hit)
+    void WhenHitSomething()
     {
         bool isPressed = InputSystem.actions.FindAction("Interact").WasPressedThisFrame();
         
-        if (isPressed && hit.collider.TryGetComponent<Interactable>(out Interactable a))
+        if (isPressed & Collided.collider.TryGetComponent<Interactable>(out Interactable a))
             a.OnUse?.Invoke();
     }
 }

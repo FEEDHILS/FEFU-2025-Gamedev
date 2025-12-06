@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Drop
   - Build
+  - SnapPoint
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - UI
   - Cant Build
   - Weapon
-  - 
+  - Buildings
   - 
   - 
   - 
