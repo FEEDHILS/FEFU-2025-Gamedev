@@ -28,7 +28,7 @@ public class CraftingLogic : MonoBehaviour
             RectTransform kek = instance.GetComponent<RectTransform>();
 
             kek.anchoredPosition3D = StartingPos + Increment * i;
-            // kek.an
+            kek.localEulerAngles = Vector3.zero;
 
             instance.GetComponent<RecipeUI>().recipe = Recipies[i];
             instance.GetComponent<RecipeUI>().Manager = this;

@@ -1,28 +1,32 @@
 using PlasticGui.WorkspaceWindow.Merge;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class ViewmodelController : MonoBehaviour
 {
-    GameObject Current = null;
+    public GameObject Current = null;
+    public UnityEvent OnEquip;
+    public UnityEvent OnDiscard;
     void Start()
     {
         PlayerInventory.Instance.OnSelectedSlotChanged += ItemCheck;
     }
 
-    // Update is called once per frame
     void ItemCheck(InventorySlot selected)
     {
         if (Current)
         {
             Destroy(Current);
+            OnDiscard.Invoke();
         }
 
 
         if (selected.item && selected.item is ToolItem tool)
         {
             Current = Instantiate(tool.Viewmodel, transform);
+            OnEquip.Invoke();
         }
     }
 
@@ -33,7 +37,7 @@ public class ViewmodelController : MonoBehaviour
 
         if (InputSystem.actions.FindAction("Attack").IsPressed() && !InventoryUI.Instance.State)
         {
-            handler.ChangeState(ViewmodelStates.Attack);
+            handler.PrimaryAction();
         }
     }
 }

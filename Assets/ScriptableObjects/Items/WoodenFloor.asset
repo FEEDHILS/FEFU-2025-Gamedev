@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: WoodenFloor
   m_EditorClassIdentifier: 
   itemName: Wooden Floor
-  icon: {fileID: 0}
-  isStackable: 1
   maxStackSize: 16
-  Prebuild: {fileID: 6400707001769550338, guid: 7bb3969993ddd824db5f2094cc916545, type: 3}
+  icon: {fileID: 0}
+  DropModel: {fileID: 0}
+  Prebuild: {fileID: 5219704834745442569, guid: a2e7cc143ce25644f9f06bd5f87decc9, type: 3}
+  BuildData: {fileID: 0}

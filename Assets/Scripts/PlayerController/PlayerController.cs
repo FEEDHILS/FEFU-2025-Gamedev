@@ -6,8 +6,6 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     public float MoveSpeed = 5f;
     public float MovementDamp;
-
-    Vector3 currentDirection;
     void Start()
     {
         rb = GetComponent<Rigidbody>();

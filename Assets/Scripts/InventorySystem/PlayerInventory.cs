@@ -24,8 +24,8 @@ public class PlayerInventory : MonoBehaviour
     {
         Instance = this;
 
-        OnInventoryChange += CheckForSelected;
         ChangeSelected(0); // Меняет текущий выбранный слот
+        OnInventoryChange += CheckForSelected;
     }
 
     public void ChangeSelected(int select)
@@ -100,7 +100,7 @@ public class PlayerInventory : MonoBehaviour
             if (Value == 0) return;
         }
 
-        Debug.LogError("Could subtract Sufficient amount of Item: " + Item.name + ", left: " + Value);
+        Debug.LogError("Couldn't subtract sufficient amount of Item: " + Item.name + ", left: " + Value);
     }
 
     public void RemoveAt(InventorySlot slot, int amount = 1, bool DoDrop = true)

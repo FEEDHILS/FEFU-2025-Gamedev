@@ -16,5 +16,5 @@ MonoBehaviour:
   maxStackSize: 4
   icon: {fileID: 0}
   DropModel: {fileID: 0}
-  Prebuild: {fileID: 0}
-  BuildData: {fileID: 11400000, guid: 1a953f800efce884085d8124e26b2c52, type: 2}
+  Prebuild: {fileID: 6400707001769550338, guid: a8b33868bcd63a0458746348a9d26f1d, type: 3}
+  BuildData: {fileID: 0}

@@ -13,7 +13,8 @@ public class PlayerCursor : MonoBehaviour
     public float maxDistance = 5f;
 
     [Tooltip("True if cursor hit something, False if cursor is in air.")]
-    static public RaycastHit Collided;
+    public RaycastHit Collided;
+    public RaycastHit[] CollidedTrigger;
     public LayerMask ColliderMask;
 
     void Awake()
@@ -25,7 +26,7 @@ public class PlayerCursor : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, ColliderMask))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, ColliderMask, QueryTriggerInteraction.Ignore))
         {
             // Добавить логику для привязке позиции к сетке
             Position = hit.point;
@@ -39,6 +40,9 @@ public class PlayerCursor : MonoBehaviour
             Collided = new RaycastHit(); 
             hit.point = Position;
         }
+
+        // Полезно при снапинге построек
+        CollidedTrigger = Physics.RaycastAll(transform.position, transform.forward, maxDistance, ColliderMask, QueryTriggerInteraction.Collide);
     }
 
 

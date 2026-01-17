@@ -10,7 +10,11 @@ public class Builder : MonoBehaviour
     void OnEnable() => instance = this;
     void OnDisable() => instance = null;
 
-    void Awake() => PlayerInventory.Instance.OnSelectedSlotChanged += SlotCheck;
+    void Start()
+    {
+        PlayerInventory.Instance.OnSelectedSlotChanged += SlotCheck;
+        SlotCheck(PlayerInventory.Instance.SelectedSlot);
+    } 
 
 
     void SlotCheck(InventorySlot slot)
@@ -20,7 +24,7 @@ public class Builder : MonoBehaviour
 
         if (slot.item && slot.item is BuildItem build)
         {
-            activeSchematic = Instantiate(build.Prebuild, Vector3.zero, Quaternion.identity);
+            activeSchematic = Instantiate(build.Prebuild, PlayerCursor.instance.Position, Quaternion.identity);
         }
     }
 

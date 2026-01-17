@@ -2,56 +2,48 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public enum ViewmodelStates
-    {
-        Pickup,
-        Idle,
-        Attack,
-    }
+{
+        Default,
+        CanAttack,
+        InProgress, // While Attacking
+}
 
 public class ViewmodelHandler : MonoBehaviour
 {
     [SerializeField] ViewmodelStates CurrentState;
-    public Animation Viewmodel;
-    public AnimationClip Pickup, Attack;
+    public Animator AnimationController;
 
     public UnityAction<ViewmodelStates> OnStateChange;
 
     void Start()
     {
-        ChangeState(ViewmodelStates.Pickup);
+        ChangeState(ViewmodelStates.Default);
     }
 
     public void ChangeState(ViewmodelStates state)
     {
-        switch (state)
-        {
-            case ViewmodelStates.Pickup:
-                CurrentState = state;
-                if (Pickup)
-                    Viewmodel.Play(Pickup.name);
-                break;
+        // Пока что в этом нет смысла
+        // switch (state)
+        // {
+        //     case ViewmodelStates.CanAttack:
+        //         CurrentState = state;
+        //         break;
 
-            case ViewmodelStates.Attack:
-                if (CurrentState != ViewmodelStates.Attack)
-                {
-                    CurrentState = state;
-                    if (Attack)
-                    {
-                        Viewmodel.Stop();
-                        Viewmodel.Play(Attack.name, PlayMode.StopAll);
-                    }
-                }
-                break;
+        //     default:
+        //         CurrentState = ViewmodelStates.Default;
+        //         break;
+        // }
 
-            case ViewmodelStates.Idle:
-                CurrentState = state;
-                break;
-
-            default:
-                CurrentState = ViewmodelStates.Idle;
-                break;
-        }
-
+        CurrentState = state;
         OnStateChange?.Invoke(CurrentState);
+    }
+
+    public void PrimaryAction()
+    {
+        if (CurrentState != ViewmodelStates.InProgress)
+        {
+            AnimationController.SetTrigger("Attack");
+            ChangeState(ViewmodelStates.InProgress);
+        }
     }
 }
