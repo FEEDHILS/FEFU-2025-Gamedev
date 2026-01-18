@@ -18,7 +18,6 @@ public class SnapPlacement : MonoBehaviour
             enabled = false;
             return;
         }
-
         
         foreach (Transform child in SnapPointsParent) { 
             SnapPointsTransform.Add(child);
@@ -27,7 +26,7 @@ public class SnapPlacement : MonoBehaviour
     }
 
     // дальше бога нет.
-    void LateUpdate()
+    void Update()
     {
         BuildSnapPoint targetPoint = null; // Найденная точка привязки (Другой постройки)
         
@@ -42,7 +41,6 @@ public class SnapPlacement : MonoBehaviour
             isSnapped = false;
             return;
         }
-
 
         #region Находим такую точку, которая лежала бы противоположно targetPoint.
 
@@ -79,24 +77,18 @@ public class SnapPlacement : MonoBehaviour
 
         #endregion
 
-        if (!bestPoint) {
+        if (!bestPoint) 
+        {
             isSnapped = false;
             return;
         }
-        // Debug.Log("Current best snap point", bestPoint);
-
-        
 
         float targetYaw = targetPoint.transform.root.eulerAngles.y;
         float currentYaw = transform.eulerAngles.y;
         float deltaYaw = Mathf.DeltaAngle(currentYaw, targetYaw);
-        // if (deltaYaw < 0)
-        //     deltaYaw += 360;
-
         float snappedYaw = Mathf.RoundToInt(deltaYaw / bestPoint.RotationSnap) * bestPoint.RotationSnap;
-        print(transform.eulerAngles.y);
 
-        transform.rotation = Quaternion.Euler(0, -snappedYaw + targetYaw, 0);
+        transform.rotation = Quaternion.Euler(0, targetYaw - snappedYaw, 0);
         
         transform.position += targetPoint.transform.position - bestPoint.transform.position;
         isSnapped = true;

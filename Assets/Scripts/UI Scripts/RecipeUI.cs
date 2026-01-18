@@ -13,8 +13,11 @@ public class RecipeUI : MonoBehaviour
         NameUI.text = recipe.Name;
     }
 
-    public void Select()
+    public void Select(bool test)
     {
-        Manager.SetSelectedRecipe(recipe);
+        if (test)
+            Manager.SetSelectedRecipe(recipe);
+        else
+            Manager.ClearSelected();
     }
 }

@@ -1171,9 +1171,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Place",
+                    "name": "PlaceBuild",
                     "type": "Button",
                     "id": "340cebe0-ec9e-4a17-90b5-255cd526344a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PlaceSchema",
+                    "type": "Button",
+                    "id": "956a5095-20a7-4560-9ae9-4964002bca6b",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -1230,7 +1239,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Place",
+                    "action": "PlaceBuild",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d63d5d07-633a-434a-8448-8a67bb28c821",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlaceSchema",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

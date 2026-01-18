@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
@@ -9,6 +10,9 @@ public class CameraController : MonoBehaviour
     public GameObject Player; // Вращаем игрок если он есть
     bool Focused = false;
 
+    public UnityEvent OnFocused;
+    public UnityEvent OnUnfocused;
+
     void Start()
     {
         MouseLock();
@@ -17,7 +21,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        // if (InputSystem.actions.FindAction("Cancel").IsPressed() && !Focused)
+        // if (InputSystem.actions.FindAction("Click").IsPressed() && !Focused)
         //     MouseLock();
 
         if (Cursor.lockState == CursorLockMode.None) return;
@@ -33,7 +37,7 @@ public class CameraController : MonoBehaviour
         Player.GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(0, CurrentRotation.y, 0));
 
         if (InputSystem.actions.FindAction("Cancel").IsPressed())
-            Focused = false;
+            MouseUnlock();
     }
 
     public void MouseLock()
@@ -42,13 +46,17 @@ public class CameraController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Focused = true;
+
+        OnFocused?.Invoke();
     }
     
-    public void MouseUnLock()
+    public void MouseUnlock()
     {
         // CurrentRotation = transform.rotation.eulerAngles;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Focused = false;
+
+        OnUnfocused?.Invoke();
     }
 }

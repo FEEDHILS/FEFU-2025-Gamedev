@@ -33,9 +33,9 @@ public class ViewmodelController : MonoBehaviour
     void Update()
     {
         if (!Current) return;
-        Current.TryGetComponent<ViewmodelHandler>(out ViewmodelHandler handler);
+        Current.TryGetComponent<ViewmodelAnimator>(out ViewmodelAnimator handler);
 
-        if (InputSystem.actions.FindAction("Attack").IsPressed() && !InventoryUI.Instance.State)
+        if (InputSystem.actions.FindAction("Attack").IsPressed() && (UIManager.instance.CurrentState == UIManager.UIState.Closed))
         {
             handler.PrimaryAction();
         }

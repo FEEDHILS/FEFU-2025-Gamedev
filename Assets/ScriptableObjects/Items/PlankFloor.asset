@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01096104ba3e2524f980ce13e5057b59, type: 3}
-  m_Name: Wood
+  m_Script: {fileID: 11500000, guid: 6d25e0641f518d640ab1ec5f90f4ad72, type: 3}
+  m_Name: PlankFloor
   m_EditorClassIdentifier: 
-  itemName: Wood Logs
-  icon: {fileID: 0}
+  itemName: Plank Floor
   maxStackSize: 16
+  icon: {fileID: 0}
+  DropModel: {fileID: 0}
+  Prebuild: {fileID: 5219704834745442569, guid: a2e7cc143ce25644f9f06bd5f87decc9, type: 3}

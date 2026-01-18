@@ -11,6 +11,7 @@ public class InventorySlot
     public bool IsEmpty => count == 0;
     public bool IsFull => count == item.maxStackSize;
 
+    // Если параметр Item не null то он перезаписывает содержимое клетки.
     public void Add(int value, Item Item = null)
     {
         if (Item is not null)
@@ -19,7 +20,7 @@ public class InventorySlot
             count = value;
             return;
         }    
-        if (item is null) Debug.LogError("Trying to Add to Null-Item Slot");
+        if (item is null) Debug.LogError("Trying to Add to Null Slot");
 
         count = Mathf.Min(item.maxStackSize, count + value);
     }

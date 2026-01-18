@@ -10,10 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc7cf6d3267e4ee41a3a34e7982edce4, type: 3}
-  m_Name: Test 1
+  m_Name: Tent
   m_EditorClassIdentifier: 
-  Name: Wooden Wall
+  Name: Tent
   Ingridients:
   - item: {fileID: 11400000, guid: 2386e96383a3df448b4893382feeeedc, type: 2}
-    count: 3
-  CraftableItem: {fileID: 11400000, guid: c9c1c2128313d15498e7dc3e5fd4f64e, type: 2}
+    count: 6
+  - item: {fileID: 11400000, guid: 5f772c4daaca9f04bbbd610a3507b0ed, type: 2}
+    count: 4
+  Description: Small tent to sleep. Sleeping skips the night, but makes you more
+    hungry
+  CraftableItem: {fileID: 11400000, guid: 5c00e1735cbd4c2418eb49bf8ea5da4e, type: 2}
+  Amount: 1

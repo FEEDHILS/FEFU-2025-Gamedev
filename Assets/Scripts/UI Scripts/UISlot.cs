@@ -31,8 +31,7 @@ public class UISlot : MonoBehaviour
 
     public void Dragging()
     {
-        DraggableUI ui = InventoryUI.Instance.DragUI;
-
+        DraggableUI ui = UIManager.instance.DragUI;
         ui.Interact(Slot);
     }
 }

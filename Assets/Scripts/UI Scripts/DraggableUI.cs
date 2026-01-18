@@ -16,6 +16,11 @@ public class DraggableUI : MonoBehaviour
     public int Amount = 1;
 
     // Update is called once per frame
+    void Awake()
+    {
+        UIManager.instance.OnStateChange.AddListener((state) => { if (state == UIManager.UIState.Closed) Drop(); });
+    }
+
     void Update()
     {
         RectTransformUtility.ScreenPointToLocalPointInRectangle(Canvas, Mouse.current.position.ReadValue(), Canvas.GetComponent<Canvas>().worldCamera, out Vector2 localPoint);

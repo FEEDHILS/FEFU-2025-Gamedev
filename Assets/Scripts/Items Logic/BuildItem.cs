@@ -6,7 +6,5 @@ using UnityEngine;
 public class BuildItem : Item
 {
     [Header("Buildings Settings")]
-    public GameObject Prebuild; // Old
-    [Header("Or you can use...")]
-    public BuildData BuildData; // New
+    public GameObject Prebuild;
 }

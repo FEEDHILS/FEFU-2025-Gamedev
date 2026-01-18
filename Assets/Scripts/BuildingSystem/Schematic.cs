@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class Schematic : MonoBehaviour
+public class Schematic : Breakable
 {
     public GameObject Build;
     public Material Available;
@@ -24,6 +24,7 @@ public class Schematic : MonoBehaviour
     public float RotationSnap = 5f;
 
     public UnityEvent OnAction; 
+    public UnityEvent OnPlaced; 
 
     bool GridMove;
     bool ToGround;
@@ -55,11 +56,17 @@ public class Schematic : MonoBehaviour
         Build.TryGetComponent(out Collider col);
         col.enabled = true;
 
+        DisableSchema();
+        OnPlaced?.Invoke();
+    }
+
+    // Вместо обычной постройки оставляет схему, которую можно потом достроить если надо
+    public void DisableSchema()
+    {
+        DisableSchematic = true;
+
         if (TryGetComponent(out SnapPlacement Snapper))
             Snapper.enabled = false;
-        
-        DisableSchematic = true;
-        Builder.instance.Placed();
     }
 
     void Update()
@@ -129,7 +136,7 @@ public class Schematic : MonoBehaviour
         if (ToGround)
         {
             RaycastHit hit;
-            if (Physics.SphereCast(PlayerCursor.instance.Position + new Vector3(0, .01f, 0), 0.1f, new Vector3(0, -1, 0), out hit, RayToGroundDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+            if (Physics.SphereCast(PlayerCursor.instance.Position + new Vector3(0, modelBounds.extents.y, 0), 0.1f, new Vector3(0, -1, 0), out hit, RayToGroundDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
             {
                 transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
             }
@@ -142,7 +149,7 @@ public class Schematic : MonoBehaviour
 
     public void KeepAboveGround()
     {
-        Vector3 RayPos = PlayerCursor.instance.Position + new Vector3(0, 0.5f, 0);
+        Vector3 RayPos = PlayerCursor.instance.Position + new Vector3(0, 0.1f, 0);
         RaycastHit hit;
         if (Physics.SphereCast(RayPos, 0.1f, Vector3.down, out hit, 4*modelBounds.extents.y, Physics.AllLayers, QueryTriggerInteraction.Ignore))
         {

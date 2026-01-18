@@ -1,22 +1,22 @@
 using System.Runtime.InteropServices;
 using UnityEngine;
 
+public class ViewmodelAttack : MonoBehaviour
+{
+    public enum WeaponTypes
+    {
+        Axe,
+        Pickaxe,
+        Sword,
+    }
 
-public enum DamageType
-{
-    Wood,
-    Rock,
-    Health,
-}
-public class AttackHitbox : MonoBehaviour
-{
     [Header("Hitbox Collider")]
     public BoxCollider Box;
 
     [Header("Damage Settings")]
     public float Damage;
     public float ImpactForce = 1;
-    public DamageType AttackType;
+    public WeaponTypes WeaponType;
     void Start()
     {
 
@@ -31,7 +31,7 @@ public class AttackHitbox : MonoBehaviour
         {
             if (i.TryGetComponent<Breakable>(out Breakable breakable))
             {
-                breakable.TakeDamage(Damage, AttackType);
+                breakable.TakeDamage(Damage, WeaponType);
             }
 
             if (i.attachedRigidbody && i.gameObject.tag != "Player")

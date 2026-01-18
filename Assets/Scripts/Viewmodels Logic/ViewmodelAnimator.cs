@@ -3,12 +3,12 @@ using UnityEngine.Events;
 
 public enum ViewmodelStates
 {
-        Default,
+        Default, // Undefined State
         CanAttack,
         InProgress, // While Attacking
 }
 
-public class ViewmodelHandler : MonoBehaviour
+public class ViewmodelAnimator : MonoBehaviour
 {
     [SerializeField] ViewmodelStates CurrentState;
     public Animator AnimationController;
@@ -22,18 +22,6 @@ public class ViewmodelHandler : MonoBehaviour
 
     public void ChangeState(ViewmodelStates state)
     {
-        // Пока что в этом нет смысла
-        // switch (state)
-        // {
-        //     case ViewmodelStates.CanAttack:
-        //         CurrentState = state;
-        //         break;
-
-        //     default:
-        //         CurrentState = ViewmodelStates.Default;
-        //         break;
-        // }
-
         CurrentState = state;
         OnStateChange?.Invoke(CurrentState);
     }

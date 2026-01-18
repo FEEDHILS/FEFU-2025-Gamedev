@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc7cf6d3267e4ee41a3a34e7982edce4, type: 3}
-  m_Name: Test 2
+  m_Name: Plank Floor
   m_EditorClassIdentifier: 
-  Name: Tent
+  Name: Wooden Floor
   Ingridients:
   - item: {fileID: 11400000, guid: 2386e96383a3df448b4893382feeeedc, type: 2}
-    count: 6
-  - item: {fileID: 11400000, guid: 5f772c4daaca9f04bbbd610a3507b0ed, type: 2}
-    count: 4
-  CraftableItem: {fileID: 11400000, guid: 5c00e1735cbd4c2418eb49bf8ea5da4e, type: 2}
+    count: 3
+  Description: Bad floor. Probably gonna rot soon... You can place it only horizontally
+  CraftableItem: {fileID: 11400000, guid: e20e02466c82e7443a9f0b81454e0213, type: 2}
+  Amount: 1
