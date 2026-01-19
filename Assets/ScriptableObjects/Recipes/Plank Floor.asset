@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc7cf6d3267e4ee41a3a34e7982edce4, type: 3}
   m_Name: Plank Floor
   m_EditorClassIdentifier: 
-  Name: Wooden Floor
+  Name: Plank Floor
   Ingridients:
   - item: {fileID: 11400000, guid: 2386e96383a3df448b4893382feeeedc, type: 2}
     count: 3
