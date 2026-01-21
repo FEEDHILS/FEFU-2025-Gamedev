@@ -1,4 +1,3 @@
 ﻿<Solution>
   <Project Path="NewAssembly.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
 </Solution>

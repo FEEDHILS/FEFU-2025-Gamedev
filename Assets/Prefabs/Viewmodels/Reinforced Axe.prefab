@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2327531782753802384}
   - component: {fileID: 3048164263129395423}
   - component: {fileID: 2552514217853452298}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: Reinforced Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}

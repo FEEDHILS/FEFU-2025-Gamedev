@@ -40,7 +40,7 @@ public class ChunkSpawner : MonoBehaviour
                 }
 
                 Vector3 Pos = InitialPos + new Vector3(key.x * GridSize.x, 0, key.y * GridSize.y);
-                GameObject chunk = Instantiate(Chunk, Pos, Quaternion.identity);
+                GameObject chunk = Instantiate(Chunk, Pos, Quaternion.identity, transform);
                 chunks.Add(key, chunk);
                 activeChunks.Add(chunk);
             }

@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     public float Sensitivity = 0.2f;
     //public float FollowSpeed = 5f;
     public GameObject Player; // Вращаем игрок если он есть
-    bool Focused = false;
+    // bool Focused = false;
 
     public UnityEvent OnFocused;
     public UnityEvent OnUnfocused;
@@ -45,7 +45,7 @@ public class CameraController : MonoBehaviour
         // CurrentRotation = transform.rotation.eulerAngles;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        Focused = true;
+        // Focused = true;
 
         OnFocused?.Invoke();
     }
@@ -55,7 +55,7 @@ public class CameraController : MonoBehaviour
         // CurrentRotation = transform.rotation.eulerAngles;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Focused = false;
+        // Focused = false;
 
         OnUnfocused?.Invoke();
     }
