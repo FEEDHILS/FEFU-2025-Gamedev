@@ -6,12 +6,22 @@ public class DropItem : MonoBehaviour
     public Item Item;
     public int Amount = 1;
 
+    void Start()
+    {
+        // Не реализовано
+        // if (Item.DropModel != null)
+        //     InitModel();
+    }
 
     void InitModel()
     {
         transform.GetChild(0).gameObject.SetActive(false);
+        GetComponent<Collider>().enabled = false;
 
-        Instantiate(Item.DropModel, transform);
+        GameObject model = Instantiate(Item.DropModel, transform);
+        model.layer = gameObject.layer;
+        Collider test = model.GetComponent<Collider>();
+        gameObject.AddComponent<Collider>();
     }
 
     public void Pickup()

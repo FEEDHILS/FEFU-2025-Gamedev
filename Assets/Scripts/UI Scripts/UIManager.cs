@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     }
 
     public UIState CurrentState;
-    [SerializeField] GameObject InventoryCrafting, Background;
+    [SerializeField] GameObject InventoryCrafting, Background, FurnaceSmelting;
     [SerializeField] InventoryUI InventorySlots;
     public DraggableUI DragUI;
 
@@ -36,6 +36,15 @@ public class UIManager : MonoBehaviour
             else
                 ChangeState(UIState.Closed);
         }
+
+        
+    }
+
+    public void OpenFurnace(Furnace furnace)
+    {
+        ChangeState(UIState.Furnace);
+        FurnaceSmelting.SetActive(true);
+        FurnaceSmelting.GetComponent<FurnaceUI>().OpenThisFurnace(furnace);
     }
 
     public void ChangeState(UIState state)
@@ -47,10 +56,14 @@ public class UIManager : MonoBehaviour
         {
             Background.SetActive(false);
             InventoryCrafting.SetActive(false);
+            FurnaceSmelting.SetActive(false);
         }
         else
         {
             Background.SetActive(true);
+
+            if (state == UIState.Furnace)
+                FurnaceSmelting.SetActive(true);
         }
     }
 

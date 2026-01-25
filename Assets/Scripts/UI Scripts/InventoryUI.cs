@@ -7,6 +7,7 @@ public class InventoryUI : MonoBehaviour
     [Header("Slots Settings (Must be set!)")]
     public int StartIndex = 4;
     public UISlot[] UISlots;
+    public Inventory Container;
 
     [Space(16)]
     [Header("Global References")]
@@ -19,7 +20,8 @@ public class InventoryUI : MonoBehaviour
     {
         for (int i = 0; i < UISlots.Length; i++)
         {
-            UISlots[i].Slot = PlayerInventory.Instance.Slots[i + StartIndex];
+            UISlots[i].Slot = Container.Slots[i + StartIndex];
+            UISlots[i].Container = Container;
             UISlots[i].Init();
         }
     }

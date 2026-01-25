@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20a8953b1ce3334b9ed335cc5e6fd53, type: 3}
   m_Name: Tree1
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 5818592651573097801, guid: aa400a48c52fdb3428b826d5d26a3123, type: 3}
-  Probability: 0.545
+  Prefab: {fileID: 6229465745040229557, guid: fca96e0836b10b14ab4e8b1ae9633cd0, type: 3}
+  Probability: 0.8

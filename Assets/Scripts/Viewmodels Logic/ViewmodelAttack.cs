@@ -10,10 +10,7 @@ public class ViewmodelAttack : MonoBehaviour
         Sword,
     }
 
-    [Header("Hitbox Collider")]
-    public BoxCollider Box;
-
-    [Header("Damage Settings")]
+    [SerializeField] float Range = 3f;
     public float Damage;
     public float ImpactForce = 1;
     public WeaponTypes WeaponType;
@@ -22,23 +19,24 @@ public class ViewmodelAttack : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    public void CreateHitbox()
+
+    public void Action()
     {
-        Collider[] colliders = Physics.OverlapBox(Box.bounds.center, Box.bounds.extents, transform.rotation, Box.includeLayers);
+        RaycastHit hit = PlayerCursor.instance.Collided;
+        
+        if ((hit.point - PlayerCursor.instance.Anchor.position).magnitude > Range)
+            return;
 
-        foreach (Collider i in colliders)
+        Collider i = hit.collider;
+        if (i.TryGetComponent<Breakable>(out Breakable breakable))
         {
-            if (i.TryGetComponent<Breakable>(out Breakable breakable))
-            {
-                breakable.TakeDamage(Damage, WeaponType);
-            }
+            breakable.TakeDamage(Damage, WeaponType, hit);
+        }
 
-            if (i.attachedRigidbody && i.gameObject.tag != "Player")
-            {
-                print(i.gameObject);
-                i.attachedRigidbody.AddForce((i.transform.position - transform.position).normalized * ImpactForce, ForceMode.Impulse);
-            }
+        if (i.attachedRigidbody && i.gameObject.tag != "Player")
+        {
+            print(i.gameObject);
+            i.attachedRigidbody.AddForce((i.transform.position - transform.position).normalized * ImpactForce, ForceMode.Impulse);
         }
     }
 }

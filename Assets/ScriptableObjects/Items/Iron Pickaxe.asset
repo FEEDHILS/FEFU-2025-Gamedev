@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Sledgehammer
   maxStackSize: 1
   icon: {fileID: 0}
-  DropModel: {fileID: 0}
+  DropModel: {fileID: 7467248559067240774, guid: 934012f87c3ae2140817442e80125eff, type: 3}
   Viewmodel: {fileID: 4729851652555289799, guid: 3576d3f3189a47e4e8f80a51e545fc65, type: 3}

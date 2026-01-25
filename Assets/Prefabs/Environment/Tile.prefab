@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6589061308754905587}
+  - component: {fileID: 7232341864260035201}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -32,6 +33,26 @@ Transform:
   - {fileID: 6092256696592569503}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7232341864260035201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2267698260902473118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c109055064a26a4468e7f925906cf1ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoundBox: {fileID: 3849235453328325654}
+  spawnPrefabs:
+  - {fileID: 11400000, guid: 17ca05603ae653546a1fb713959e378a, type: 2}
+  - {fileID: 11400000, guid: b68394d166fdacc4ea69ce2331702da2, type: 2}
+  - {fileID: 11400000, guid: b344b897b0e41584dbc41b9f91aec224, type: 2}
+  objectsPerPlane: 32
+  Density: {x: 2, y: 2}
+  NoiseScale: 0.64
 --- !u!1 &5604338569974874278
 GameObject:
   m_ObjectHideFlags: 0

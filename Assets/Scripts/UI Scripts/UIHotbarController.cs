@@ -12,6 +12,7 @@ public class UIHotbarController : MonoBehaviour
         {
             InventorySlot slot = PlayerInventory.Instance.Slots[i];
             UISlots[i].Slot = slot;
+            UISlots[i].Container = PlayerInventory.Instance;
             UISlots[i].Init();
 
             slotMap[slot] = UISlots[i];

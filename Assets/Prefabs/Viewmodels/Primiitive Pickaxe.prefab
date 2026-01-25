@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7029656883367892979}
   - component: {fileID: 1223330168089676295}
   - component: {fileID: 4094510458098254381}
+  - component: {fileID: -8636370524723516027}
   m_Layer: 7
   m_Name: Primiitive Pickaxe
   m_TagString: Untagged
@@ -70,6 +71,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentState: 0
   AnimationController: {fileID: 1223330168089676295}
+--- !u!114 &-8636370524723516027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4729851652555289799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac965e146486fb04f9bdaf070ffce68d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Range: 3
+  Damage: 1
+  ImpactForce: 1
+  WeaponType: 1
 --- !u!1001 &4267483418505727312
 PrefabInstance:
   m_ObjectHideFlags: 0

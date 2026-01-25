@@ -1,29 +1,18 @@
 using System;
-using System.Collections.Generic;
-using System.Collections;
-
-// using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using Codice.Client.GameUI.Explorer;
-using System.Linq;
 
-public class PlayerInventory : MonoBehaviour
+
+public class PlayerInventory : Inventory
 {
-    public List<InventorySlot> Slots = new List<InventorySlot>(20);
-    public InventorySlot SelectedSlot = null;
-
     public event Action<InventorySlot> OnSelectedSlotChanged;
-    public event Action<InventorySlot> OnInventoryChange;
-
+    public InventorySlot SelectedSlot;
     // Singleton setup
     public static PlayerInventory Instance { get; private set; }
 
     void Awake()
     {
         Instance = this;
-
+        
         ChangeSelected(0); // Меняет текущий выбранный слот
         OnInventoryChange += CheckForSelected;
     }
@@ -36,99 +25,6 @@ public class PlayerInventory : MonoBehaviour
         OnSelectedSlotChanged?.Invoke(SelectedSlot);
 
         SelectedSlot.item?.OnEquip();
-    }
-
-    public int AddItem(Item Item, int Value)
-    {
-        List<InventorySlot> EmptySlots = new List<InventorySlot>(20);
-
-        foreach (InventorySlot i in Slots)
-        {
-            if (i.IsEmpty) EmptySlots.Add(i);
-
-            if (i.item == Item && !i.IsFull)
-            {
-                Value = InsertItem(i, Value);
-            }
-
-            if (Value == 0) return 0;
-        }
-
-        foreach (InventorySlot j in EmptySlots)
-        {
-            Value = InsertItem(j, Value, Item);
-            if (Value == 0) return 0;
-        }
-
-
-        return Value; // Остаток, если удалось разнести все предметы по ячейкам
-    }
-    
-    // Не указывая Item мы делаем добавку. Если указать Item - произойдет перезапись (Прошлое значение полностью пропадет)
-    public int InsertItem(InventorySlot slot, int Value, Item Item = null)
-    {
-        int amount;
-
-        if (!Item)
-            amount = Mathf.Min(Value, slot.item.maxStackSize - slot.count);
-        else
-            amount = Mathf.Min(Value, Item.maxStackSize);
-
-
-        slot.Add(amount, Item);
-
-        OnInventoryChange?.Invoke(slot);
-
-        Value -= amount;
-        return Value;
-    }
-
-    // Просто ищем и удаляем n-ое кол-во предмета
-    public void RemoveItem(Item Item, int Value)
-    {
-        foreach (InventorySlot i in Slots)
-        {
-            if (i.item == Item)
-            {
-                int amount = Mathf.Min(Value, i.count);
-                i.Remove(amount);
-                Value -= amount;
-
-                OnInventoryChange?.Invoke(i);
-            }
-
-            if (Value == 0) return;
-        }
-
-        Debug.LogError("Couldn't subtract sufficient amount of Item: " + Item.name + ", left: " + Value);
-    }
-
-    public void RemoveAt(InventorySlot slot, int amount = 1, bool DoDrop = true)
-    {
-        if (slot.IsEmpty) return;
-
-        if (DoDrop)
-        {
-            GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
-            DropManager.Instance.Drop(slot.item, amount, transform.position, camera.transform.rotation, 5);
-        }
-
-        slot.Remove(amount);
-        OnInventoryChange?.Invoke(slot);
-    }
-
-    public int CountItem(Item Item)
-    {
-        int total = 0;
-        foreach (InventorySlot i in Slots)
-        {
-            if (i.item == Item)
-            {
-                total += i.count;
-            }
-        }
-
-        return total;
     }
 
     // public void ManualInventoryChange(InventorySlot slot) => OnInventoryChange?.Invoke(slot); // Obsolete maybe?

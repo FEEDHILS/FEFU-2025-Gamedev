@@ -12,7 +12,7 @@ public class TileFeatures : MonoBehaviour
 
     Bounds bounds;
     List<Vector3> points = new List<Vector3>();
-    void Awake()
+    void Start()
     {
         bounds = BoundBox.bounds;
 
@@ -34,6 +34,7 @@ public class TileFeatures : MonoBehaviour
             int ind = Random.Range(0, points.Count);
 
             Instantiate(prefab, points[ind], Quaternion.Euler(Random.Range(-2, 2), Random.Range(0, 360), Random.Range(-2, 2)), gameObject.transform);
+            points.RemoveAt(ind);
         }
     }
 

@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,9 +12,12 @@ public class Breakable : MonoBehaviour
     public Item DropItem;
     public int Amount;
 
-    bool OnBreakOverride = false; // Перезаписывает стандартное поведение при ломании.
+    [SerializeField] bool OnBreakOverride = false; // Перезаписывает стандартное поведение при ломании.
     public UnityEvent OnBreak;
     public UnityEvent OnHit;
+
+    [SerializeField] GameObject HitParticles;
+    [SerializeField] string sfx = "";
 
     void Awake()
     {
@@ -32,6 +36,28 @@ public class Breakable : MonoBehaviour
 
         if (Health <= 0)
             OnBreak?.Invoke();
+    }
+
+    public void TakeDamage(float Damage, ViewmodelAttack.WeaponTypes Weapon, RaycastHit hit)
+    {
+        float FinalDamage = Damage;
+        OnHit?.Invoke();
+        if (!IsSuitableWeapon(Weapon))
+            FinalDamage *= WrongTypeMultiplier;
+
+        Health -= FinalDamage;
+        VisualEffects(hit);
+
+        if (Health <= 0)
+            OnBreak?.Invoke();
+    }
+
+    void VisualEffects(RaycastHit hit)
+    {
+        GameObject particles = Instantiate(HitParticles, hit.point, Quaternion.LookRotation(hit.normal));
+        float liveTime = particles.GetComponent<ParticleSystem>().main.duration;
+        Destroy(particles, liveTime);
+        // TODO: Добавить звук
     }
 
     bool IsSuitableWeapon(ViewmodelAttack.WeaponTypes Weapon)

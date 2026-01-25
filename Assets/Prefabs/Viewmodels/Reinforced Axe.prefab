@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2327531782753802384}
   - component: {fileID: 3048164263129395423}
   - component: {fileID: 2552514217853452298}
+  - component: {fileID: 2495693091110767935}
   m_Layer: 7
   m_Name: Reinforced Axe
   m_TagString: Untagged
@@ -124,3 +125,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2495693091110767935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2780363762856834768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac965e146486fb04f9bdaf070ffce68d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Range: 3
+  Damage: 2
+  ImpactForce: 1.5
+  WeaponType: 0

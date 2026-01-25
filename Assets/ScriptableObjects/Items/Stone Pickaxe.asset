@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Primitive Pickaxe
   maxStackSize: 1
   icon: {fileID: 0}
-  DropModel: {fileID: 0}
+  DropModel: {fileID: 9182649852879368245, guid: 90fffa296f5cf6d4399ddb71f87473a2, type: 3}
   Viewmodel: {fileID: 4729851652555289799, guid: 86f627a3153b0a085882ff8c9669fa29, type: 3}

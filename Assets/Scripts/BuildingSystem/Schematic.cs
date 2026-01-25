@@ -149,7 +149,7 @@ public class Schematic : Breakable
 
     public void KeepAboveGround()
     {
-        Vector3 RayPos = PlayerCursor.instance.Position + new Vector3(0, 0.1f, 0);
+        Vector3 RayPos = PlayerCursor.instance.Position + new Vector3(0, 0.05f, 0);
         RaycastHit hit;
         if (Physics.SphereCast(RayPos, 0.1f, Vector3.down, out hit, 4*modelBounds.extents.y, Physics.AllLayers, QueryTriggerInteraction.Ignore))
         {

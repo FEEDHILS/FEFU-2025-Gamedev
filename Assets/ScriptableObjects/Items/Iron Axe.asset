@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Reinforced Axe
   maxStackSize: 1
   icon: {fileID: 0}
-  DropModel: {fileID: 0}
+  DropModel: {fileID: 7482623732984504945, guid: 10ce15848b50ea745be96f733c3d1b09, type: 3}
   Viewmodel: {fileID: 2780363762856834768, guid: 12bff9c4f2ba06c418d4e20d2c365144, type: 3}

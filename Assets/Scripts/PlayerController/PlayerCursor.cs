@@ -48,9 +48,23 @@ public class PlayerCursor : MonoBehaviour
 
     void WhenHitSomething()
     {
-        bool isPressed = InputSystem.actions.FindAction("Interact").WasPressedThisFrame();
+        bool isPressed = InputSystem.actions.FindAction("Interact").IsPressed();
         
         if (isPressed & Collided.collider.TryGetComponent<Interactable>(out Interactable a))
             a.OnUse?.Invoke();
+    }
+
+    void OnDrawGizmos()
+    {
+        if (Collided.point != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(Collided.point, 0.1f);
+        }
+        // if (CollidedTrigger.Length > 0 && CollidedTrigger[0].point != null)
+        // {
+        // Gizmos.color = Color.red;
+        // Gizmos.DrawWireSphere(CollidedTrigger[0].point, 0.1f);
+        // }
     }
 }

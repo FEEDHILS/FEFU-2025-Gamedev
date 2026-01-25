@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20a8953b1ce3334b9ed335cc5e6fd53, type: 3}
   m_Name: Boulder
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 1185511623119020381, guid: c8b21735533c8044fa66789398139771, type: 3}
-  Probability: 0.135
+  Prefab: {fileID: 5391505119204758689, guid: 486ac11fb82a3ab48aaed4d49b762d14, type: 3}
+  Probability: 0.314
