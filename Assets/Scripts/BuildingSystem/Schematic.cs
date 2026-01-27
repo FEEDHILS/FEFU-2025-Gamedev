@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class Schematic : Breakable
+public class Schematic : MonoBehaviour
 {
+    public BuildItem ItemRef;
     public GameObject Build;
     public Material Available;
     public Material Unavailable;
@@ -17,7 +19,8 @@ public class Schematic : Breakable
     public Vector3 GridMetrics = new Vector3(0.5f, 0.5f, 0.5f);
     public float RayToGroundDistance = 5f; // Для привязки к земле
 
-    public bool DisableGroundClipping = true;
+    public bool DisableGroundClipping = false;
+    public BoxCollider box;
 
     [Header("Настройки Поворота")]
     public bool AllowManualRotation = true;
@@ -31,33 +34,84 @@ public class Schematic : Breakable
     Bounds modelBounds;
     bool ManualRotation = false; // off by default
     float cumulativeRotation = 0f;
-    Material initialMat;
+    Material[] initialMat;
+    float boundsCenterOffset;
 
+    private List<(MeshRenderer renderer, Material material)> initialSingleMaterials = new List<(MeshRenderer, Material)>();
     void Awake()
     {
-        Build.TryGetComponent(out MeshRenderer mesh);
-        initialMat = mesh.material;
-        mesh.material = Available;
-
         Build.TryGetComponent(out Collider col);
+        if (box || TryGetComponent(out box))
+        {
+            modelBounds = box.bounds;
+        }
+        else if (Build.TryGetComponent(out MeshRenderer renderer))
+        {
+            modelBounds = renderer.bounds;
+        }
+        else
+        {
+            Debug.LogWarning("No BoxCollider for defining Schematic shape", this);
+            modelBounds = new Bounds(transform.position, Vector3.one * 0.05f);
+        }
         col.enabled = false;
+        boundsCenterOffset = (modelBounds.center - transform.position).y;
         
-        modelBounds = mesh.bounds;
-        // FIX: Не может найти bounds от своего коллайдера. Мб потому что он выключен?
-        // if (Build.TryGetComponent(out Collider col))
-        //     modelBounds = col.bounds;
+        foreach (MeshRenderer renderer in Build.GetComponentsInChildren<MeshRenderer>())
+        {
+            if (renderer.sharedMaterials.Length > 0)
+            {
+                // Сохраняем только первый материал
+                initialSingleMaterials.Add((renderer, renderer.sharedMaterial));
+                
+                // Меняем только первый материал на Available
+                Material[] newMats = renderer.sharedMaterials;
+                newMats[0] = Available;
+                renderer.sharedMaterials = newMats;
+            }
+        }
+
+        if (TryGetComponent(out Interactable i))
+            i.enabled = false;
+
+        if (DisableSchematic)
+            Place();
     }
 
     public void Place()
     {
-        Build.TryGetComponent(out MeshRenderer mesh);
-        mesh.material = initialMat;
+        foreach (var (renderer, originalMat) in initialSingleMaterials)
+        {
+            if (renderer != null && renderer.sharedMaterials.Length > 0)
+            {
+                Material[] newMats = renderer.sharedMaterials;
+                newMats[0] = originalMat;
+                renderer.sharedMaterials = newMats;
+            }
+        }
 
         Build.TryGetComponent(out Collider col);
         col.enabled = true;
+        if (TryGetComponent(out Interactable i))
+            i.enabled = true;
 
         DisableSchema();
+        if (!Build.TryGetComponent(out Breakable _))
+        {
+            CreateBlankBreakable();
+        }
         OnPlaced?.Invoke();
+    }
+
+    [ContextMenu("Add Breakable to Build")]
+    public void CreateBlankBreakable()
+    {
+        Breakable comp = Build.AddComponent<Breakable>();
+        comp.Amount = 1;
+        comp.Health = 10;
+        comp.DropItem = ItemRef;
+        comp.WrongTypeMultiplier = 1;
+        comp.Regenerate = true;
     }
 
     // Вместо обычной постройки оставляет схему, которую можно потом достроить если надо
@@ -149,11 +203,11 @@ public class Schematic : Breakable
 
     public void KeepAboveGround()
     {
-        Vector3 RayPos = PlayerCursor.instance.Position + new Vector3(0, 0.05f, 0);
+        Vector3 RayPos = PlayerCursor.instance.Position + Vector3.up;
         RaycastHit hit;
         if (Physics.SphereCast(RayPos, 0.1f, Vector3.down, out hit, 4*modelBounds.extents.y, Physics.AllLayers, QueryTriggerInteraction.Ignore))
         {
-            Vector3 clampedPos = new Vector3(transform.position.x, hit.point.y + modelBounds.extents.y, transform.position.z);
+            Vector3 clampedPos = new Vector3(transform.position.x, hit.point.y + modelBounds.extents.y - boundsCenterOffset, transform.position.z);
             transform.position = Vector3.Max(transform.position, clampedPos);
         }
     }

@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2267698260902473118}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.99, y: 0, z: -28.92}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -48,8 +48,17 @@ MonoBehaviour:
   BoundBox: {fileID: 3849235453328325654}
   spawnPrefabs:
   - {fileID: 11400000, guid: 17ca05603ae653546a1fb713959e378a, type: 2}
+  - {fileID: 11400000, guid: 484f398f653577d459a256589cb6f543, type: 2}
   - {fileID: 11400000, guid: b68394d166fdacc4ea69ce2331702da2, type: 2}
-  - {fileID: 11400000, guid: b344b897b0e41584dbc41b9f91aec224, type: 2}
+  - {fileID: 11400000, guid: 865b90d7d184be44f98cb32934e2b19e, type: 2}
+  - {fileID: 11400000, guid: d280eb581aad553478802eca34c68003, type: 2}
+  - {fileID: 11400000, guid: 1b047a4c5b06d784c96d22ead8af48e3, type: 2}
+  - {fileID: 11400000, guid: 78b72a63b8d07ca429fa10ee6ff60312, type: 2}
+  - {fileID: 11400000, guid: 038cc767263fa67469312cb2e47015ae, type: 2}
+  - {fileID: 11400000, guid: 4c754944273fbc547abae93d9c48f75f, type: 2}
+  - {fileID: 11400000, guid: 6a8abd021b65fd54bbdf30084d438a1f, type: 2}
+  - {fileID: 11400000, guid: b68394d166fdacc4ea69ce2331702da2, type: 2}
+  - {fileID: 11400000, guid: 865b90d7d184be44f98cb32934e2b19e, type: 2}
   objectsPerPlane: 32
   Density: {x: 2, y: 2}
   NoiseScale: 0.64

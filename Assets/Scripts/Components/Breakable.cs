@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,18 +12,44 @@ public class Breakable : MonoBehaviour
 
     public Item DropItem;
     public int Amount;
-
-    [SerializeField] bool OnBreakOverride = false; // Перезаписывает стандартное поведение при ломании.
+    [SerializeField] GameObject Parent;
+    public bool OnBreakOverride = false; // Перезаписывает стандартное поведение при ломании.
+    public bool Regenerate = false; // Полезно для построек
     public UnityEvent OnBreak;
     public UnityEvent OnHit;
 
     [SerializeField] GameObject HitParticles;
     [SerializeField] string sfx = "";
 
+    float maxHealth;
+    bool tookDamage = false;
     void Awake()
     {
+        maxHealth = Health;
+        if (Regenerate)
+            StartCoroutine("Regenerating");
+        
         if (!OnBreakOverride)
-            OnBreak.AddListener(() => { PlayerInventory.Instance.AddItem(DropItem, Amount); Destroy(gameObject); });
+            OnBreak.AddListener(Break);
+    }
+
+    IEnumerator Regenerating()
+    {
+        yield return new WaitForSeconds(2.5f);
+        if (!tookDamage)
+            Health = maxHealth;
+        
+        tookDamage = false;
+        StartCoroutine("Regenerating");
+    }
+
+    public void Break()
+    {
+        PlayerInventory.Instance.AddItem(DropItem, Amount);
+        if (!Parent)
+            Destroy(gameObject);
+        else
+            Destroy(Parent);
     }
 
     public void TakeDamage(float Damage, ViewmodelAttack.WeaponTypes Weapon)
@@ -33,7 +60,7 @@ public class Breakable : MonoBehaviour
             FinalDamage *= WrongTypeMultiplier;
 
         Health -= FinalDamage;
-
+        tookDamage = true;
         if (Health <= 0)
             OnBreak?.Invoke();
     }
@@ -47,17 +74,22 @@ public class Breakable : MonoBehaviour
 
         Health -= FinalDamage;
         VisualEffects(hit);
-
+        tookDamage = true;
         if (Health <= 0)
             OnBreak?.Invoke();
     }
 
     void VisualEffects(RaycastHit hit)
     {
-        GameObject particles = Instantiate(HitParticles, hit.point, Quaternion.LookRotation(hit.normal));
-        float liveTime = particles.GetComponent<ParticleSystem>().main.duration;
-        Destroy(particles, liveTime);
-        // TODO: Добавить звук
+        if (HitParticles)
+        {
+            GameObject particles = Instantiate(HitParticles, hit.point, Quaternion.LookRotation(hit.normal));
+            float liveTime = particles.GetComponent<ParticleSystem>().main.duration;
+            Destroy(particles, liveTime);
+        }
+
+        if (sfx != "")
+            AudioManager.instance.Play(sfx);
     }
 
     bool IsSuitableWeapon(ViewmodelAttack.WeaponTypes Weapon)

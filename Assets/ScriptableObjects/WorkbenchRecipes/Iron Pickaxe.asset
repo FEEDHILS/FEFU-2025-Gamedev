@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7cf6d3267e4ee41a3a34e7982edce4, type: 3}
+  m_Name: Iron Pickaxe
+  m_EditorClassIdentifier: 
+  Name: Reinforced Pickaxe
+  Ingridients:
+  - item: {fileID: 11400000, guid: 5c351cb96134fe14c937260e3f2a4808, type: 2}
+    count: 4
+  - item: {fileID: 11400000, guid: e5be7096b2ce42247b6b54190153a2bd, type: 2}
+    count: 2
+  Description: Iron Pickaxe, same as Iron Axe, is a better tier of instruments
+  CraftableItem: {fileID: 11400000, guid: 6ee2a98eaf28f7647a55d81b7b1a00ed, type: 2}
+  Amount: 1

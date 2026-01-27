@@ -35,9 +35,6 @@ public class CameraController : MonoBehaviour
         transform.localRotation = Quaternion.Euler(CurrentRotation.x - 90, 0, 0);
 
         Player.GetComponent<Transform>().localRotation = Quaternion.Euler(0, CurrentRotation.y, 0);
-
-        if (InputSystem.actions.FindAction("Cancel").IsPressed())
-            MouseUnlock();
     }
 
     public void MouseLock()

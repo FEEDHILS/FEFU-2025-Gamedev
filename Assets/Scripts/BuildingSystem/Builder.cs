@@ -22,14 +22,14 @@ public class Builder : MonoBehaviour
         if (slot.item && slot.item is BuildItem build)
         {
             activeSchematic = Instantiate(build.Prebuild, PlayerCursor.instance.Position, Quaternion.identity).GetComponent<Schematic>();
-
+            activeSchematic.ItemRef = build;
             activeSchematic.OnPlaced.AddListener(Placed);
         }
     }
 
     void Update()
     {
-        if (InputSystem.actions.FindAction("PlaceBuild").WasPressedThisFrame())
+        if (InputSystem.actions.FindAction("PlaceBuild").WasPressedThisFrame() && (UIManager.instance.CurrentState == UIManager.UIState.Closed))
             activeSchematic?.OnAction?.Invoke();
 
         // if (InputSystem.actions.FindAction("PlaceSchema").WasPressedThisFrame())

@@ -50,8 +50,9 @@ MonoBehaviour:
   Health: 10
   WrongTypeMultiplier: 0.1
   DropItem: {fileID: 11400000, guid: 5f772c4daaca9f04bbbd610a3507b0ed, type: 2}
-  Amount: 16
+  Amount: 6
   OnBreakOverride: 0
+  Regenerate: 0
   OnBreak:
     m_PersistentCalls:
       m_Calls: []
@@ -147,7 +148,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 93caadf4359ae8143aad35b3145d31af, type: 2}
+  - {fileID: 2100000, guid: e72f4493fa3beb04ab604750538798cf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

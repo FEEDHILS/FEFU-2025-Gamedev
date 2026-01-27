@@ -30,11 +30,12 @@ public class DayNightCycle : MonoBehaviour
         Cycle = (Cycle + Speed*Time.deltaTime) % 360;
         
         // Чтобы не обновлять каждый кадр, обновляем при "значительных" изменениях
-        if (Mathf.Abs(Cycle - lastCycle) > 0.5)
-        {
-            lastCycle = Cycle;
-            SkyUpdate();
-        }
+        // if (Mathf.Abs(Cycle - lastCycle) > 0.1)
+        // {
+        //     lastCycle = Cycle;
+        //     SkyUpdate();
+        // }
+        SkyUpdate();
     }
 
     [ContextMenu("Evaluate")]

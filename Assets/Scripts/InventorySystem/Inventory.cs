@@ -61,6 +61,16 @@ public class Inventory : MonoBehaviour
         return Value;
     }
 
+    // Полезно при уничтожении контейнера
+    public void DropEverything()
+    {
+        foreach (InventorySlot slot in Slots)
+        {
+            if (!slot.IsEmpty)
+                DropManager.Instance.Drop(slot.item, slot.count, transform.position, Quaternion.identity);
+        }
+    }
+
     // Просто ищем и удаляем n-ое кол-во предмета
     public void RemoveItem(Item Item, int Value)
     {
@@ -85,7 +95,7 @@ public class Inventory : MonoBehaviour
     {
         // if (slot.IsEmpty) return;
 
-        if (DoDrop)
+        if (DoDrop && !(slot.item == null))
         {
             Vector3 DropDirection = (PlayerCursor.instance.Position - PlayerCursor.instance.Anchor.position).normalized;
 

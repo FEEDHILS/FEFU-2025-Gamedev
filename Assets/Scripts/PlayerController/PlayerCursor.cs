@@ -45,12 +45,11 @@ public class PlayerCursor : MonoBehaviour
         CollidedTrigger = Physics.RaycastAll(transform.position, transform.forward, maxDistance, ColliderMask, QueryTriggerInteraction.Collide);
     }
 
-
     void WhenHitSomething()
     {
-        bool isPressed = InputSystem.actions.FindAction("Interact").IsPressed();
+        bool isPressed = InputSystem.actions.FindAction("Interact").WasPressedThisFrame();
         
-        if (isPressed & Collided.collider.TryGetComponent<Interactable>(out Interactable a))
+        if (UIManager.instance.CurrentState == UIManager.UIState.Closed && isPressed & Collided.collider.TryGetComponent<Interactable>(out Interactable a))
             a.OnUse?.Invoke();
     }
 

@@ -138,6 +138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Range: 3
-  Damage: 2
-  ImpactForce: 1.5
+  Damage: 5
+  ImpactForce: 5
   WeaponType: 0

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7cf6d3267e4ee41a3a34e7982edce4, type: 3}
+  m_Name: Campfire
+  m_EditorClassIdentifier: 
+  Name: Campfire
+  Ingridients:
+  - item: {fileID: 11400000, guid: 5c351cb96134fe14c937260e3f2a4808, type: 2}
+    count: 4
+  - item: {fileID: 11400000, guid: 5f772c4daaca9f04bbbd610a3507b0ed, type: 2}
+    count: 8
+  Description: Your source of light, nights are especially dark so its always nice
+    to have it
+  CraftableItem: {fileID: 11400000, guid: 4f4367ebb8b152a429ea16dab7cbb3a7, type: 2}
+  Amount: 1

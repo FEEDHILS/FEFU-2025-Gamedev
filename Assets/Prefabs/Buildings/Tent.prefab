@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 26058757341114573}
   - component: {fileID: 2862146435590784007}
   - component: {fileID: 444130505683860298}
+  - component: {fileID: 881476518379476143}
+  - component: {fileID: 4818374778768871733}
+  - component: {fileID: 5733946399716080187}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -28,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4375422362349577682}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.055, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -110,6 +113,73 @@ CapsuleCollider:
   m_Height: 2.56
   m_Direction: 2
   m_Center: {x: 0, y: 0.67, z: 0.015385091}
+--- !u!114 &881476518379476143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4375422362349577682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dfae88c95a51464abe4fe5793ff9a33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Material: 1
+  Health: 10
+  WrongTypeMultiplier: 1
+  DropItem: {fileID: 11400000, guid: 5c00e1735cbd4c2418eb49bf8ea5da4e, type: 2}
+  Amount: 1
+  Parent: {fileID: 6400707001769550338}
+  OnBreakOverride: 0
+  Regenerate: 1
+  OnBreak:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
+  HitParticles: {fileID: 4613823806991483612, guid: 2e1bdcc7c7fb6ca4b8ca040c3c8a7859, type: 3}
+  sfx: 
+--- !u!114 &4818374778768871733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4375422362349577682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 954fb52dc592be645933c43075ee1752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnUse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5733946399716080187}
+        m_TargetAssemblyTypeName: TentSleep, NewAssembly
+        m_MethodName: TryToSleep
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5733946399716080187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4375422362349577682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace90957d0e4d8944b86bc671df2f6e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6400707001769550338
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eee7f7119764fc4f90cd0be3f892e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemRef: {fileID: 11400000, guid: 5c00e1735cbd4c2418eb49bf8ea5da4e, type: 2}
   Build: {fileID: 4375422362349577682}
   Available: {fileID: 2100000, guid: c2cf3ad17b8af324d981bbd4f6e0b529, type: 2}
   Unavailable: {fileID: 2100000, guid: 6486d7edbbc44d64a90f2223662dae1c, type: 2}
@@ -164,6 +235,7 @@ MonoBehaviour:
   GridMetrics: {x: 0.5, y: 0.5, z: 0.5}
   RayToGroundDistance: 5
   DisableGroundClipping: 0
+  box: {fileID: 0}
   AllowManualRotation: 1
   RotationSnap: 5
   OnAction:
@@ -181,3 +253,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlaced:
+    m_PersistentCalls:
+      m_Calls: []

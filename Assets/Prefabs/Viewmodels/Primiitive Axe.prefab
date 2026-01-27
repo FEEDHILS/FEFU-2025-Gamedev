@@ -151,13 +151,29 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7609145667655734672, guid: 5266fdf5b1928514c8ce2c2a7937469b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -7235015103121818086, guid: 5266fdf5b1928514c8ce2c2a7937469b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -3316209038747775882, guid: 5266fdf5b1928514c8ce2c2a7937469b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b31862e05336ca7418d6cb384b90f414, type: 2}
+    - target: {fileID: -344004081357383697, guid: 5266fdf5b1928514c8ce2c2a7937469b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5266fdf5b1928514c8ce2c2a7937469b, type: 3}
       propertyPath: m_Name
       value: Stone Axe
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5266fdf5b1928514c8ce2c2a7937469b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1170970068873931921, guid: 5266fdf5b1928514c8ce2c2a7937469b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -166,7 +182,7 @@ PrefabInstance:
     - target: {fileID: 2929640277652407947, guid: 5266fdf5b1928514c8ce2c2a7937469b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f726ffd553d25364794373523f52a120, type: 2}
+      objectReference: {fileID: 2100000, guid: e72f4493fa3beb04ab604750538798cf, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

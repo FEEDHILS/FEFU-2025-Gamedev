@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eee7f7119764fc4f90cd0be3f892e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemRef: {fileID: 11400000, guid: c9c1c2128313d15498e7dc3e5fd4f64e, type: 2}
   Build: {fileID: 8062909300709368517}
   Available: {fileID: 2100000, guid: c2cf3ad17b8af324d981bbd4f6e0b529, type: 2}
   Unavailable: {fileID: 2100000, guid: 6486d7edbbc44d64a90f2223662dae1c, type: 2}
@@ -156,6 +157,7 @@ MonoBehaviour:
   GridMetrics: {x: 0.5, y: 0.5, z: 0.5}
   RayToGroundDistance: 5
   DisableGroundClipping: 1
+  box: {fileID: 0}
   AllowManualRotation: 1
   RotationSnap: 5
   OnAction:
@@ -173,6 +175,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlaced:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5777861822160754038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +339,7 @@ GameObject:
   - component: {fileID: 7878854848274315352}
   - component: {fileID: 1620623627479423131}
   - component: {fileID: 7049745334118754144}
+  - component: {fileID: 2072855645101337311}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -430,3 +436,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.05, z: 1.0000004}
   m_Center: {x: 0, y: 0.018199205, z: 0}
+--- !u!114 &2072855645101337311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8062909300709368517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dfae88c95a51464abe4fe5793ff9a33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Material: 0
+  Health: 10
+  WrongTypeMultiplier: 1
+  DropItem: {fileID: 11400000, guid: c9c1c2128313d15498e7dc3e5fd4f64e, type: 2}
+  Amount: 1
+  Parent: {fileID: 5219704834745442569}
+  OnBreakOverride: 0
+  Regenerate: 1
+  OnBreak:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
+  HitParticles: {fileID: 6432957715941825460, guid: 7ee4fd00c3a0f864698540b3ff35340d, type: 3}
+  sfx: TreeChop

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Berries
   m_EditorClassIdentifier: 
   itemName: Berries
-  maxStackSize: 4
+  maxStackSize: 16
   icon: {fileID: 0}
   DropModel: {fileID: 0}
-  Saturation: 1
+  Saturation: 5

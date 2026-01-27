@@ -5,7 +5,7 @@ public class DropItem : MonoBehaviour
 {
     public Item Item;
     public int Amount = 1;
-
+    public bool DisableInstead = false;
     void Start()
     {
         // Не реализовано
@@ -16,11 +16,19 @@ public class DropItem : MonoBehaviour
     void InitModel()
     {
         transform.GetChild(0).gameObject.SetActive(false);
-        GetComponent<Collider>().enabled = false;
-
         GameObject model = Instantiate(Item.DropModel, transform);
+        Collider newCol = model.GetComponent<Collider>();
+        
+        Collider current = GetComponent<Collider>();
+        newCol.includeLayers = current.includeLayers;
+        newCol.excludeLayers = current.excludeLayers;
+
+        Destroy( current );
+        
+
         model.layer = gameObject.layer;
-        Collider test = model.GetComponent<Collider>();
+        
+        
         gameObject.AddComponent<Collider>();
     }
 
@@ -28,6 +36,12 @@ public class DropItem : MonoBehaviour
     {
         Amount = PlayerInventory.Instance.AddItem(Item, Amount);
 
-        if (Amount == 0) Destroy(gameObject);
+        if (Amount == 0)
+        {
+            if (DisableInstead)
+                Destroy(this);
+            else
+                Destroy(gameObject);
+        }
     }
 }
